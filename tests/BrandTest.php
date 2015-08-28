@@ -59,7 +59,7 @@
 
             $result = Brand::getAll();
 
-            $this->assertEquals($test_brand, $result);
+            $this->assertEquals([$test_brand], $result);
         }
 
         function test_find() {

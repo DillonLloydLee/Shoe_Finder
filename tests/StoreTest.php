@@ -59,7 +59,7 @@
 
             $result = Store::getAll();
 
-            $this->assertEquals($test_store, $result);
+            $this->assertEquals([$test_store], $result);
         }
 
         function test_find() {
