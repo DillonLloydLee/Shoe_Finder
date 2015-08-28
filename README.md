@@ -12,7 +12,7 @@ _This is a program for listing local shoe stores and viewing what shoe brands th
 
 * _Initialize your mysql databases by typing "mysql.server start" and "mysql -uroot -proot" in the terminal._
 * _Type "apachectl start" in the terminal, then open localhost:8080/phpmyadmin in your web browser.  Password and username are both "root."_
-* _Import the shoe_finder.sql.zip file.  Import its test as well if you plan to run PHPUnit tests.
+* _Import the shoes.sql.zip file.  Import its test as well if you plan to run PHPUnit tests.
 * _Clone directory from "https://github.com/DillonLloydLee/Shoe_Finder.git"_
 * _run "composer install" into the terminal from the main folder directory._
 * _run "php -S localhost:8000" from the web folder, then open that location in your web browser._
