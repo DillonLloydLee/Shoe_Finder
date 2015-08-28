@@ -16,6 +16,36 @@
             <hr>
 
             <div class="col-xs-8">
+
+                {% if new == 1 %}
+                    <h4> > new store added! < </h4>
+                {% endif %}
+
+                <h2>Local Shoe Stores:</h2>
+                {% if stores is not empty %}
+                    <ul>
+                    {% for store in stores %}
+                        <form action="/store/{{ store.getId }}" method="get">
+                            <button type="submit" class="btn-pick">-></button>
+                        </form>
+                        {{ store.getName }}
+                        <br>
+                    {% endfor %}
+                    </ul>
+
+                {% else %}
+                    <p>There are no stores in your area.</p>
+                    <p>This world is barren and without shoes.</p>
+                {% endif %}
+                <hr class="small">
+
+                <form action="/store_added" method="post">
+                    <button type="submit" class="btn-add">SUBMIT -></button>
+                    <input id="name" name="name" type="text" required autofocus
+                    placeholder="Add A Local Store">
+                    <br>
+                </form>
+
             </div>
 
             <div class="col-xs-4">
@@ -23,11 +53,11 @@
                 <form action="/" method="get">
                     <button type="submit" class="btn-lg btn-home">RETURN HOME</button>
                 </form>
-                <form action="/brands" method="get">
-                    <button type="submit" class="btn-lg btn-brand">VIEW ALL STUDENTS</button>
-                </form>
                 <form action="/stores" method="get">
-                    <button type="submit" class="btn-lg btn-store">VIEW ALL COURSES</button>
+                    <button type="submit" class="btn-lg btn-brand">VIEW ALL STORES</button>
+                </form>
+                <form action="/brands" method="get">
+                    <button type="submit" class="btn-lg btn-store">VIEW ALL BRANDS</button>
                 </form>
             </div>
 

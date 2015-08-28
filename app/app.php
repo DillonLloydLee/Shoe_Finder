@@ -25,13 +25,29 @@
     // All Brands Route
     $app->get("/brands", function() use ($app) {
         $brands = Brand::getAll();
-        return $app["twig"]->render("brands.html.twig", array("brands" => $brands));
+        return $app["twig"]->render("brands.html.twig", array("brands" => $brands, "new" => 0));
     });
 
     // All Stores Route
     $app->get("/stores", function() use ($app) {
         $stores = Store::getAll();
-        return $app["twig"]->render("stores.html.twig", array("stores" => $stores));
+        return $app["twig"]->render("stores.html.twig", array("stores" => $stores, "new" => 0));
+    });
+
+    // All Brands Route: Brand Added
+    $app->post("/brand_added", function() use ($app) {
+        $new_brand = new Brand($_POST["name"]);
+        $new_brand->save();
+        $brands = Brand::getAll();
+        return $app["twig"]->render("brands.html.twig", array("brands" => $brands, "new" => 1));
+    });
+
+    // All Stores Route: Store Added
+    $app->post("/store_added", function() use ($app) {
+        $new_store = new Store($_POST["name"]);
+        $new_store->save();
+        $stores = Store::getAll();
+        return $app["twig"]->render("stores.html.twig", array("stores" => $stores, "new" => 1));
     });
 
     return $app;

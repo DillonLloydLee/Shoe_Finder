@@ -16,6 +16,36 @@
             <hr>
 
             <div class="col-xs-8">
+
+                {% if new == 1 %}
+                    <h4> > new brand added! < </h4>
+                {% endif %}
+
+                <h2>Available Shoe Brands:</h2>
+                {% if brands is not empty %}
+                <ul>
+                    {% for brand in brands %}
+                        <form action="/brand/{{ brand.getId }}" method="get">
+                            <button type="submit" class="btn-pick">-></button>
+                        </form>
+                        {{ brand.getName }}
+                        <br>
+                    {% endfor %}
+                    </ul>
+
+                {% else %}
+                    <p>No shoe brands currently exist.</p>
+                    <p>This world is barren and without shoes.</p>
+                {% endif %}
+                <hr class="small">
+
+                <form action="/brand_added" method="post">
+                    <button type="submit" class="btn-md">SUBMIT -></button>
+                    <input id="name" name="name" type="text" required autofocus
+                    placeholder="Add A Shoe Brand">
+                    <br>
+                </form>
+
             </div>
 
             <div class="col-xs-4">
@@ -23,11 +53,11 @@
                 <form action="/" method="get">
                     <button type="submit" class="btn-lg btn-home">RETURN HOME</button>
                 </form>
-                <form action="/brands" method="get">
-                    <button type="submit" class="btn-lg btn-brand">VIEW ALL STUDENTS</button>
-                </form>
                 <form action="/stores" method="get">
-                    <button type="submit" class="btn-lg btn-store">VIEW ALL COURSES</button>
+                    <button type="submit" class="btn-lg btn-brand">VIEW ALL STORES</button>
+                </form>
+                <form action="/brands" method="get">
+                    <button type="submit" class="btn-lg btn-store">VIEW ALL BRANDS</button>
                 </form>
             </div>
 
