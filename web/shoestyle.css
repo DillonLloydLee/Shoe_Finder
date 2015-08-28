@@ -1,0 +1,64 @@
+@font-face {
+    font-family: "pb_smooth";
+    src: url(pb_smooth.ttf);
+    }
+
+body {
+    font-family: "pb_smooth";
+}
+
+button.btn-home {
+    background-color: #58D3F7;
+    font-size: 16px;
+    width: 200px;
+}
+
+button.btn-brand {
+    background-color: #00BFFF;
+    font-size: 16px;
+    width: 200px;
+}
+
+button.btn-store {
+    background-color: #01A9DB;
+    font-size: 16px;
+    width: 200px;
+}
+
+img.bg-stretch {
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    z-index:-1
+}
+
+img.logo {
+    width: 130px;
+    height: 130px;
+    overflow: auto;
+    float: right;
+    margin: 0 100px 0 0;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 900;
+}
+
+div.name {
+    font-size: 24px;
+}
+div.stats {
+    font-size: 12px;
+}
+
+hr {
+    background-color: black;
+    height: 3px;
+}
+
+form {
+    display: inline;
+}
