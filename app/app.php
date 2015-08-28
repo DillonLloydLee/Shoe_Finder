@@ -59,7 +59,8 @@
     // Individual Store Route: Rename
     $app->patch("/rename_store-{id}", function($id) use ($app){
         $store = Store::find($id);
-        $store->rename($_POST["name"]);
+        $name = $_POST["name"];
+        $store->rename($name);
         return $app['twig']->render("store_info.html.twig", array('store' => $store, "new" => 0, "rename" => 1));
     });
 
