@@ -9,18 +9,24 @@ body {
 
 button.btn-home {
     background-color: #58D3F7;
+    border-color: black;
+    margin: 0 0 2px 0;
     font-size: 16px;
     width: 200px;
 }
 
 button.btn-brand {
     background-color: #00BFFF;
+    border-color: black;
+    margin: 0 0 2px 0;
     font-size: 16px;
     width: 200px;
 }
 
 button.btn-store {
     background-color: #01A9DB;
+    border-color: black;
+    margin: 0 0 2px 0;
     font-size: 16px;
     width: 200px;
 }
