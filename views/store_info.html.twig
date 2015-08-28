@@ -26,7 +26,15 @@
                 placeholder
 
                 <hr class="small">
+                <h2>Rename this store?</h2>
+                <form action="/rename_store-{{ store.getId }}" method="post">
+                    <input type="hidden" name="_method" value="patch">
+                    <button type="submit" class="btn-xs btn-add">NEW NAME --></button>
+                    <input id="name" name="name" type="text"
+                        placeholder="{{ store.getName }}" required>
+                </form>
 
+                <hr class="small">
                 <h2>Remove {{ store.getName }}?</h2>
                 <form action="/remove_store-{{ store.getId }}" method="post">
                     <input type="hidden" name="_method" value="delete">

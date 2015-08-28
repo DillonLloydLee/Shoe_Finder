@@ -26,11 +26,19 @@
                 placeholder
 
                 <hr class="small">
+                <h2>Rename this brand?</h2>
+                <form action="/rename_brand-{{ brand.getId }}" method="post">
+                    <input type="hidden" name="_method" value="patch">
+                    <button type="submit" class="btn-xs btn-add">NEW NAME --></button>
+                    <input id="name" name="name" type="text"
+                        placeholder="{{ brand.getName }}" required>
+                </form>
 
+                <hr class="small">
                 <h2>Remove {{ brand.getName }}?</h2>
                 <form action="/remove_brand-{{ brand.getId }}" method="post">
                     <input type="hidden" name="_method" value="delete">
-                    <button type="submit" class="btn-xs btn-add">DELETE FOREVER</button>
+                    <button type="submit" class="btn-xs btn-add">DELETE FOREVER!</button>
                 </form>
 
             </div>
