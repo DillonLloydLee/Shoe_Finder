@@ -19,11 +19,29 @@
         function getId() {
             return $this->id;
         }
+
+        function save() {
+            $GLOBALS["DB"]->exec("INSERT INTO stores (name) VALUES ('{$this->getName()}');");
+            $this->id = $GLOBALS["DB"]->lastInsertId();
+        }
+
+        static function getAll() {
+            $raw_all = $GLOBALS["DB"]->query("SELECT * FROM stores;");
+            $all = array();
+            foreach($raw_all as $store) {
+                $name = $store["name"];
+                $id = $store["id"];
+                $new_store = new Store($name, $id);
+                array_push($all, $new_store);
+            }
+            return $all;
+        }
+
+        static function deleteAll() {
+            $GLOBALS["DB"]->exec("DELETE FROM stores;");
+        }
+
+
+
     }
-
-
-
-
-
-
 ?>

@@ -20,11 +20,11 @@
         }
 
         function test_save_and_getAll() {
-            $name = "Filthy's Foot Locker";
+            $name = "Reebok";
             $test_store = new Store($name);
             $test_store->save();
 
-            $name2 = "Dirty's Budget Boots";
+            $name2 = "Nike";
             $test_store2 = new Store($name2);
             $test_store2->save();
 
