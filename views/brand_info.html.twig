@@ -27,7 +27,33 @@
 
                 <h2>{{ brand.getName }} is available<br>
                     at these retailers:</h2>
-                placeholder
+                {% if stores is not empty %}
+                    <ul>
+                        {% for store in stores %}
+                            <form action="/store-{{ store.getId }}" method="get">
+                                <button type="submit" class="btn-pick">-></button>
+                            </form>
+                            {{ store.getName }}
+                            <br>
+                        {% endfor %}
+                    </ul>
+
+                {% else %}
+                    <p>We're sorry!</p>
+                    <p>These shoes are currently all sold out.</p>
+                {% endif %}
+
+                <hr class="small">
+                <h2>Did we miss a store that sells {{ brand.getName }}?</h2>
+                <form action="/store-added-{{ brand.getId }}" method="post">
+                    <input id="id" name="id" type="hidden" value="{{ brand.getId() }}">
+                    <button type="submit" class="btn-xs btn-pick">ADD A STORE -></button>
+                    <select id='store_id' name='store_id' type='text'>
+                        {% for store in all_stores %}
+                            <option value="{{ store.getId }}"> {{ store.getName }} </option>
+                        {% endfor %}
+                    </select>
+                </form>
 
                 <hr class="small">
                 <h2>Rename this brand?</h2>

@@ -20,14 +20,40 @@
                 {% if new == 1 %}
                     <h4> > now carrying XXX! < </h4>
                 {% endif %}
-                
+
                 {% if rename == 1 %}
                     <h4> > Rename Successful! < </h4>
                 {% endif %}
 
                 <h2>{{ store.getName }} carries<br>
                     these fine brands:</h2>
-                placeholder
+                {% if brands is not empty %}
+                    <ul>
+                        {% for brand in brands %}
+                            <form action="/brand-{{ brand.getId }}" method="get">
+                                <button type="submit" class="btn-pick">-></button>
+                            </form>
+                            {{ brand.getName }}
+                            <br>
+                        {% endfor %}
+                    </ul>
+
+                {% else %}
+                    <p>We're sorry!</p>
+                    <p>This store is completely out of stock.</p>
+                {% endif %}
+
+                <hr class="small">
+                <h2>Does {{ store.getName }} stock something we missed?</h2>
+                <form action="/brand-added-{{ store.getId }}" method="post">
+                    <input id="id" name="id" type="hidden" value="{{ store.getId() }}">
+                    <button type="submit" class="btn-xs btn-pick">ADD A BRAND -></button>
+                    <select id='brand_id' name='brand_id' type='text'>
+                        {% for brand in all_brands %}
+                            <option value="{{ brand.getId }}"> {{ brand.getName }} </option>
+                        {% endfor %}
+                    </select>
+                </form>
 
                 <hr class="small">
                 <h2>Rename this store?</h2>

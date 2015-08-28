@@ -53,7 +53,9 @@
     // Individual Store Route
     $app->get("/store-{id}", function($id) use ($app){
         $store = Store::find($id);
-        return $app['twig']->render("store_info.html.twig", array('store' => $store, "new" => 0, "rename" => 0));
+        $brands = $store->getBrands();
+        $all_brands = Brand::getAll();
+        return $app['twig']->render("store_info.html.twig", array('store' => $store, "brands" => $brands, "all_brands" => $all_brands, "new" => 0, "rename" => 0));
     });
 
     // Individual Store Route: Rename
@@ -67,7 +69,9 @@
     // Individual Brand Route
     $app->get("/brand-{id}", function($id) use ($app){
         $brand = Brand::find($id);
-        return $app['twig']->render("brand_info.html.twig", array('brand' => $brand, "new" => 0, "rename" => 0));
+        $stores = $brand->getStores();
+        $all_stores = Store::getAll();
+        return $app['twig']->render("brand_info.html.twig", array('brand' => $brand, "stores" => $stores, "all_stores" => $all_stores, "new" => 0, "rename" => 0));
     });
 
     // Individual Brand Route: Rename
@@ -75,7 +79,9 @@
         $brand = Brand::find($id);
         $name = $_POST["name"];
         $brand->rename($name);
-        return $app['twig']->render("brand_info.html.twig", array('brand' => $brand, "new" => 0, "rename" => 1));
+        $stores = $brand->getStores();
+        $all_stores = Store::getAll();
+        return $app['twig']->render("brand_info.html.twig", array('brand' => $brand, "stores" => $stores, "all_stores" => $all_stores, "new" => 0, "rename" => 0));
     });
 
     // All Brands Route: Brand Removed
