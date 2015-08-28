@@ -50,5 +50,17 @@
         return $app["twig"]->render("stores.html.twig", array("stores" => $stores, "new" => 1));
     });
 
+    // Individual Store Route
+    $app->get("/store-{id}", function($id) use ($app){
+        $store = Store::find($id);
+        return $app['twig']->render("store_info.html.twig", array('store' => $store, "new" => 0));
+    });
+
+    // Individual Brand Route
+    $app->get("/brand-{id}", function($id) use ($app){
+        $brand = Brand::find($id);
+        return $app['twig']->render("brand_info.html.twig", array('brand' => $brand, "new" => 0));
+    });
+
     return $app;
 ?>

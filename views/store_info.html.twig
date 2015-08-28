@@ -18,32 +18,19 @@
             <div class="col-xs-8">
 
                 {% if new == 1 %}
-                    <h4> > new brand added! < </h4>
+                    <h4> > now carrying XXX! < </h4>
                 {% endif %}
 
-                <h2>Available Shoe Brands:</h2>
-                {% if brands is not empty %}
-                <ul>
-                    {% for brand in brands %}
-                        <form action="/brand-{{ brand.getId }}" method="get">
-                            <button type="submit" class="btn-pick">-></button>
-                        </form>
-                        {{ brand.getName }}
-                        <br>
-                    {% endfor %}
-                    </ul>
+                <h2>{{ store.getName }} carries<br>
+                    these fine brands:</h2>
+                placeholder
 
-                {% else %}
-                    <p>No shoe brands currently exist.</p>
-                    <p>This world is barren and without shoes.</p>
-                {% endif %}
                 <hr class="small">
 
-                <form action="/brand_added" method="post">
-                    <button type="submit" class="btn-add">SUBMIT -></button>
-                    <input id="name" name="name" type="text" required autofocus
-                    placeholder="Add A Shoe Brand">
-                    <br>
+                <h2>Remove {{ store.getName }}?</h2>
+                <form action="/remove_store-{{ store.getId }}" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="btn-xs btn-add">DELETE FOREVER</button>
                 </form>
 
             </div>
