@@ -78,5 +78,32 @@
             $this->assertEquals($test_store2, $result);
         }
 
+        function test_addBrand_and_getBrands() {
+            $name = "Dirty Shoes";
+            $test_store = new Store($name);
+            $test_store->save();
+
+            $name = "Reebok";
+            $test_brand = new Brand($name);
+            $test_brand->save();
+
+            $name2 = "Nike";
+            $test_brand2 = new Brand($name2);
+            $test_brand2->save();
+
+            $test_store->addBrand($test_brand);
+            $test_store->addBrand($test_brand2);
+
+            $result = $test_store->getBrands();
+
+            $this->assertEquals([$test_brand, $test_brand2], $result);
+        }
+
+
+
+
+
+
+
     }
 ?>
