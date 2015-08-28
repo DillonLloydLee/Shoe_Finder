@@ -25,6 +25,10 @@
                     <h4> > store removed! < </h4>
                 {% endif %}
 
+                {% if delete_all == 1 %}
+                    <h4> > all stores deleted! < </h4>
+                {% endif %}
+
                 <h2>Local Shoe Stores:</h2>
                 {% if stores is not empty %}
                     <ul>
@@ -48,6 +52,11 @@
                     <input id="name" name="name" type="text" required autofocus
                     placeholder="Add A Local Store">
                     <br>
+                </form>
+
+                <hr class="small">
+                <form action="/erase_stores" method="get">
+                    <button type="submit" class="btn-erase">DELETE ALL!</button>
                 </form>
 
             </div>

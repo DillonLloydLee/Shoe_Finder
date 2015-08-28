@@ -25,13 +25,27 @@
     // All Brands Route
     $app->get("/brands", function() use ($app) {
         $brands = Brand::getAll();
-        return $app["twig"]->render("brands.html.twig", array("brands" => $brands, "new" => 0, "delete" => 0));
+        return $app["twig"]->render("brands.html.twig", array("brands" => $brands, "new" => 0, "delete" => 0, "delete_all" => 0));
+    });
+
+    // All Brands Route: Delete All
+    $app->get("/erase_brands", function() use ($app) {
+        Brand::deleteAll();
+        $brands = Brand::getAll();
+        return $app["twig"]->render("brands.html.twig", array("brands" => $brands, "new" => 0, "delete" => 0, "delete_all" => 1));
     });
 
     // All Stores Route
     $app->get("/stores", function() use ($app) {
         $stores = Store::getAll();
-        return $app["twig"]->render("stores.html.twig", array("stores" => $stores, "new" => 0, "delete" => 0));
+        return $app["twig"]->render("stores.html.twig", array("stores" => $stores, "new" => 0, "delete" => 0, "delete_all" => 0));
+    });
+
+    // All Stores Route: Delete All
+    $app->get("/erase_stores", function() use ($app) {
+        Store::deleteAll();
+        $stores = Store::getAll();
+        return $app["twig"]->render("stores.html.twig", array("stores" => $stores, "new" => 0, "delete" => 0, "delete_all" => 1));
     });
 
     // All Brands Route: Brand Added
@@ -39,7 +53,7 @@
         $new_brand = new Brand($_POST["name"]);
         $new_brand->save();
         $brands = Brand::getAll();
-        return $app["twig"]->render("brands.html.twig", array("brands" => $brands, "new" => 1, "delete" => 0));
+        return $app["twig"]->render("brands.html.twig", array("brands" => $brands, "new" => 1, "delete" => 0, "delete_all" => 0));
     });
 
     // All Stores Route: Store Added
@@ -47,7 +61,7 @@
         $new_store = new Store($_POST["name"]);
         $new_store->save();
         $stores = Store::getAll();
-        return $app["twig"]->render("stores.html.twig", array("stores" => $stores, "new" => 1, "delete" => 0));
+        return $app["twig"]->render("stores.html.twig", array("stores" => $stores, "new" => 1, "delete" => 0, "delete_all" => 0));
     });
 
     // Individual Store Route
@@ -111,7 +125,7 @@
         $brand = Brand::find($id);
         $brand->remove();
         $brands = Brand::getAll();
-        return $app["twig"]->render("brands.html.twig", array("brands" => $brands, "new" => 0, "delete" => 1));
+        return $app["twig"]->render("brands.html.twig", array("brands" => $brands, "new" => 0, "delete" => 1, "delete_all" => 0));
     });
 
     // All Stores Route: Store Removed
@@ -119,7 +133,7 @@
         $store = Store::find($id);
         $store->remove();
         $stores = Store::getAll();
-        return $app["twig"]->render("stores.html.twig", array("stores" => $stores, "new" => 0, "delete" => 1));
+        return $app["twig"]->render("stores.html.twig", array("stores" => $stores, "new" => 0, "delete" => 1, "delete_all" => 0));
     });
 
     return $app;

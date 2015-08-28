@@ -31,6 +31,13 @@ button.btn-store {
     width: 200px;
 }
 
+button.btn-erase {
+    background-color: black;
+    border-color: white;
+    color: white;
+    font-size: 16px;
+}
+
 button.btn-add {
     background-color: #01A9DB;
     border-color: black;
